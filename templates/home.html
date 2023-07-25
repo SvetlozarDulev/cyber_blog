@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated and user.years_experience > 1 or user.years_experience == 0 %}
+<p>Hello {{ user.username }}! You have {{ user.years_experience }} years of experience as a writer.</p>
+{% endif %}
+    {% if user.is_authenticated and user.years_experience == 1 %}
+<p>Hello {{ user.username }}! You have {{ user.years_experience }} year of experience as a writer.</p>
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
+<a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+{% endblock %}
