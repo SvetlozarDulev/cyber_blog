@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Reports{% endblock title %}
+{% block content %}
+{% for report in report_list %}
+    <br>
+<div class="card" style="width: 50rem; display: flex">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{% url 'report_detail' report.pk %}">{{ report.title }}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Author: {{ report.author }}</h6>
+    <p class="card-text">{{ report.body|slice:"0:150" }}</p>
+      {% if user == report.author %}
+    <a href="{% url 'report_edit' report.pk %}" class="card-link">Edit</a>
+    <a href="{% url 'report_delete' report.pk %}" class="card-link">Delete</a>
+      {% endif %}
+  </div>
+</div>
+    <br>
+{% endfor %}
+{% endblock content %}

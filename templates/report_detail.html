@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Add your CSS link here if you have a separate CSS file -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #3498db;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .article-content {
+      text-align: justify;
+      line-height: 1.8;
+    }
+
+    .article-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .article-button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+
+<body>
+  <header>
+    <h1>{{ report.title }}</h1>
+  </header>
+
+  <div class="article-container">
+    <div class="article-content">
+      <p>
+          {{ report.body }}
+      </p>
+
+        <p>
+            Additional materials: <a href="{{ report.additional_materials }}">{{ report.additional_materials }}</a>
+        </p>
+
+    </div>
+
+    <div class="article-buttons">
+        {% if user == report.author %}
+      <a href="{% url 'report_edit' report.pk %}" class="article-button">Edit</a>
+      <a href="{% url 'report_delete' report.pk %}" class="article-button">Delete</a>
+        {% endif %}
+      <a href="{% url 'report_list' %}" class="article-button">Back to Reports</a>
+    </div>
+  </div>
+</body>
+{% endblock content %}

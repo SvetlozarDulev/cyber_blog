@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'regularexam.accounts',
     'regularexam.pages',
+    'regularexam.reports',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Sofia'
 
 USE_I18N = True
 
