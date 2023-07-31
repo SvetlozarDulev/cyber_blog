@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 <div style=" display: inline-block">
-    <p><button class="btn btn-danger" style="padding:10px 20px; ">Explore Cybersecurity Reports</button></p>
+    <p><button class="btn btn-danger" style="padding:10px 20px; "><a href="{% url 'report_list' %}">Explore Cybersecurity Reports</a></button></p>
 </div>
 {#{% if user.is_authenticated and user.years_experience > 1 or user.years_experience == 0 %}#}
 {#<p>Hello {{ user.username }}! You have {{ user.years_experience }} years of experience as a writer.</p>#}

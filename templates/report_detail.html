@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
   <!-- Add your CSS link here if you have a separate CSS file -->
@@ -63,9 +64,6 @@
         <p>
             Additional materials: <a href="{{ report.additional_materials }}">{{ report.additional_materials }}</a>
         </p>
-
-    </div>
-
     <div class="article-buttons">
         {% if user == report.author %}
       <a href="{% url 'report_edit' report.pk %}" class="article-button">Edit</a>
@@ -74,5 +72,24 @@
       <a href="{% url 'report_list' %}" class="article-button">Back to Reports</a>
     </div>
   </div>
+  <br>
+  <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit">Post</button>
+        </form>
+    </div>
+  <h4 style="text-align: center">Comments</h4>
+      {% for comment in report.comment_set.all %}
+          <br>
+        <div style="display: grid" class="card">
+            <h6 style="font-size: 20px;font-style: italic;">Author: {{ comment.author  }}</h6>
+            <p>{{ comment }}</p>
+            <p>{{ comment.post_date }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
 </body>
 {% endblock content %}
