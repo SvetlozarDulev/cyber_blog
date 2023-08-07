@@ -14,10 +14,10 @@ class CustomUserAdmin(UserAdmin):
         "years_experience",
         "is_staff",
     ]
-    list_filter = ["is_staff","is_superuser"]
+    list_filter = ["is_staff","is_superuser", "groups"]
     search_fields = ["email",]
     ordering = ("username",)
-    filter_horizontal = ("user_permissions",)
+
 
     # Extend the existing 'fieldsets' attribute from 'UserAdmin' to add a new field ('years_experience')
     fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("years_experience",)}),)

@@ -4,10 +4,10 @@ from .models import Report, Comment
 
 class CommentInline(admin.StackedInline):
     model = Comment
-    #1 empty rows
-    extra = 1
+    extra = 0
 
 class ReportAdmin(admin.ModelAdmin):
+    list_display = ['title','author']
     inlines = [
         CommentInline,
     ]

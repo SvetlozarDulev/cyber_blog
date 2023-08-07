@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for advice in givebestadvice_list %}
+    <br>
+    <div class="card">
+         <p>{{ advice.text }}</p>
+    </div>
+    <br>
+{% endfor %}
+{% endblock content %}

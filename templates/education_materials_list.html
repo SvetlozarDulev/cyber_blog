@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Cybersecurity materials{% endblock title %}
+
+{% block content %}
+{% for material in educationalmaterials_list %}
+    <br>
+    <div class="card">
+        <h2>{{ material.title }}</h2>
+        <p>{{ material.description }}</p>
+        <p><a href="{{ material.url }}">{{ material.url }}</a></p>
+    </div>
+    <br>
+{% endfor %}
+{% endblock content %}

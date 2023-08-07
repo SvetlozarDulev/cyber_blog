@@ -74,11 +74,15 @@
   </div>
   <br>
   <div>
+    {% for group in user.groups.all %}
+      {% if group.name == "guest" %}
         <form method="post">
             {% csrf_token %}
             {{ form|crispy }}
             <button type="submit">Post</button>
         </form>
+      {% endif %}
+    {% endfor %}
     </div>
   <h4 style="text-align: center">Comments</h4>
       {% for comment in report.comment_set.all %}

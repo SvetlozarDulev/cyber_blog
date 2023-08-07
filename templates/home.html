@@ -2,9 +2,19 @@
 
 {% block title %}Home{% endblock title %}
 {% block content %}
-<div style=" display: inline-block">
-    <p><button class="btn btn-danger" style="padding:10px 20px; "><a href="{% url 'report_list' %}">Explore Cybersecurity Reports</a></button></p>
+    <br>
+<div style="text-align: center ">
+    <h2><button class="btn btn-danger"><a style="font-size: xx-large;" href="{% url 'report_list' %}">Explore Cybersecurity Reports</a></button></h2>
 </div>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <h3>
+            Amateurs hack systems, professionals hack people.
+        </h3>
+            <p>Bruce Schneier</p>
+    </div>
 {#{% if user.is_authenticated and user.years_experience > 1 or user.years_experience == 0 %}#}
 {#<p>Hello {{ user.username }}! You have {{ user.years_experience }} years of experience as a writer.</p>#}
 {#    <p><a href="{% url 'logout' %}">Log Out</a></p>#}
