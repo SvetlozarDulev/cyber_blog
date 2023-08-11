@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'regularexam.accounts',
     'regularexam.pages',
     'regularexam.reports',
+    'regularexam.virus_api',
 ]
 
 MIDDLEWARE = [
@@ -82,9 +83,13 @@ WSGI_APPLICATION = 'regularexam.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "regularexam",
+        "USER": "postgres",
+        "PASSWORD": "postgresproject",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 

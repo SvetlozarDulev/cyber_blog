@@ -2,6 +2,7 @@
 
 {% block title %}Reports{% endblock title %}
 {% block content %}
+    {% if report_list %}
 {% for report in report_list %}
     <br>
 <div class="card" style="width: 50rem; display: flex">
@@ -16,5 +17,10 @@
   </div>
 </div>
     <br>
+
 {% endfor %}
+        {% else %}
+        <br>
+        <h1 style="text-align: center">No reports for now</h1>
+    {% endif %}
 {% endblock content %}

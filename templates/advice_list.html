@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if advice %}
 {% for advice in givebestadvice_list %}
+    <h1>Cyber Security Tips</h1>
     <br>
     <div class="card">
          <p>{{ advice.text }}</p>
     </div>
     <br>
 {% endfor %}
+    {% else %}
+    <h1>There is still no advices.</h1>
+    <p>Write the first one.</p>
+    <a href="{% url 'write-advice' %}">Write your best advice.</a>
+    {% endif %}
 {% endblock content %}

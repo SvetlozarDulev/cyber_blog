@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
-</body>
-</html>
+{% block content %}
+
+
+{% if positives %}
+<h1>Scan Result</h1>
+    <p>URL: {{ scanned_link.url }}</p>
+ <p> Scan ID: {{ virus_result.scan_id }}</p>
+        <p>Resource: {{ virus_result.url }}</p>
+        <p>Positives: {{ virus_result.positives }}</p>
+
+{% else %}
+    <h2>{{ error }}</h2>
+{% endif %}
+    <a href="{% url 'home' %}">Back to Home</a>
+{% endblock content %}

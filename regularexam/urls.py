@@ -23,5 +23,6 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls")),
     path('reports/',include("regularexam.reports.urls")),
     path('', include("regularexam.pages.urls")),
+    path('virus/',include('regularexam.virus_api.url')),
 
 ]
