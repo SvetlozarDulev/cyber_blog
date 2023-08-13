@@ -2,10 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Add education materials</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form | crispy }}
-    <button type="submit" class="btn btn-primary">ADD</button>
-</form>
+    <div class="container text-center my-5">
+        <h1 class="mb-4">Enrich with Knowledge</h1>
+        <p class="lead mb-4">Contribute to our educational resources by sharing valuable materials.</p>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <button type="submit" class="btn btn-primary btn-lg mt-4">Fuel Knowledge</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

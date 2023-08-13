@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
-
-{% block title %}Cybersecurity materials{% endblock title %}
+{% block title %}Unlock Cyber Insights{% endblock title %}
 
 {% block content %}
-{% for material in educationalmaterials_list %}
-    <br>
-    <div class="card">
-        <h2>{{ material.title }}</h2>
-        <p>{{ material.description }}</p>
-        <p><a href="{{ material.url }}">{{ material.url }}</a></p>
+<div class="container my-5">
+    <div class="row">
+        {% for material in educationalmaterials_list %}
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ material.title }}</h2>
+                        <p class="card-text">{{ material.description }}</p>
+                        <a href="{{ material.url }}" class="btn btn-warning btn-sm">Dive In</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    <br>
-{% endfor %}
+</div>
 {% endblock content %}

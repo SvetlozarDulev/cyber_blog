@@ -1,37 +1,23 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title %}Home{% endblock title %}
+
+{% block title %}Welcome to Our Cybersecurity Hub{% endblock title %}
+
 {% block content %}
     <br>
     <br>
-    <br>
-<div style="text-align: center ">
-    <h2><button class="btn btn-warning"><a style="font-size: xx-large;" href="{% url 'report_list' %}">Explore Cybersecurity Reports</a></button></h2>
-</div>
-    <br>
-    <br>
-    <br>
-    <div style="text-align: center;">
-        <h3>
-            Amateurs hack systems, professionals hack people.
-        </h3>
-            <p>Bruce Schneier</p>
+<div class="container text-center">
+    <div class="mt-5">
+        <h1 class="display-4 text-warning">Unlock the Secrets of Cybersecurity</h1>
+        <p class="lead">Explore our collection of insightful reports and stay ahead of the digital curve.</p>
+        <a href="{% url 'report_list' %}" class="btn btn-warning btn-lg">Discover Reports</a>
     </div>
 
-{#{% if user.is_authenticated and user.years_experience > 1 or user.years_experience == 0 %}#}
-{#<p>Hello {{ user.username }}! You have {{ user.years_experience }} years of experience as a writer.</p>#}
-{#    <p><a href="{% url 'logout' %}">Log Out</a></p>#}
-{#    <p><a class="btn btn-primary btn-lg" href="{% url 'report_list' %}" role="button">View all the reports</a></p>#}
-{##}
-{##}
-{#{% endif %}#}
-{#{% if user.is_authenticated and user.years_experience == 1 %}#}
-{#<p>Hello {{ user.username }}! You have {{ user.years_experience }} year of experience as a writer.</p>#}
-{#<a href="{% url 'logout' %}">Log Out</a>#}
-{#{% endif %}#}
-{#{% if not user.is_authenticated %}#}
-{#<p>You are not logged in</p>#}
-{#<a href="{% url 'login' %}">Log In</a>#}
-{#<a href="{% url 'signup' %}">Sign Up</a>#}
-{#{% endif %}#}
+    <div class="my-5">
+        <blockquote class="blockquote">
+            <p class="mb-0">"Amateurs hack systems, professionals hack people."</p>
+            <br>
+            <footer class="blockquote-footer">Bruce Schneier</footer>
+        </blockquote>
+    </div>
+</div>
 {% endblock content %}

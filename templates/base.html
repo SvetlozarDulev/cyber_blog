@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}Cybersecurity Magazine{% endblock title %}</title>
+  <title>{% block title %}Cybersecurity Blog{% endblock title %}</title>
   <meta name="viewport" content="width=device-width,
   initial-scale=1, shrink-to-fit=no">
 
@@ -16,7 +16,7 @@
   <header class="p-3 mb-3 border-bottom">
     <div class="d-flex flex-wrap align-items-center justify-content-center
         justify-content-lg-start">
-      <a class="navbar-brand" href="{% url 'home' %}">Cybersecurity magazine</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Cybersecurity Blog</a>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center
           mb-md-0">
       {% for group in user.groups.all %}

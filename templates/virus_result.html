@@ -2,17 +2,26 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-
-{% if positives %}
-<h1>Scan Result</h1>
-    <p>URL: {{ scanned_link.url }}</p>
- <p> Scan ID: {{ virus_result.scan_id }}</p>
-        <p>Resource: {{ virus_result.url }}</p>
-        <p>Positives: {{ virus_result.positives }}</p>
-
-{% else %}
-    <h2>{{ error }}</h2>
-{% endif %}
-    <a href="{% url 'home' %}">Back to Home</a>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% if positives %}
+                <div class="result-card p-4">
+                    <h2 class="mb-4">Scan Results</h2>
+                    <p><strong>URL:</strong> {{ scanned_link.url }}</p>
+                    <p><strong>Scan ID:</strong> {{ virus_result.scan_id }}</p>
+                    <p><strong>Resource:</strong> {{ virus_result.url }}</p>
+                    <p><strong>Positives:</strong> {{ virus_result.positives }}</p>
+                </div>
+            {% else %}
+                <div class="error-card p-4">
+                    <h2 class="mb-4">{{ error }}</h2>
+                </div>
+            {% endif %}
+            <div class="text-center mt-4">
+                <a href="{% url 'home' %}" class="btn btn-outline-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

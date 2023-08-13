@@ -144,3 +144,12 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'polin2971@gmail.com'
+EMAIL_HOST_PASSWORD = 'lxdxuuxqmilgxnnw'
+EMAIL_USE_TLS = True
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_RESULT_SERIALIZER = 'json'

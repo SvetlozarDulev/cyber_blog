@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if advice %}
-{% for advice in givebestadvice_list %}
-    <h1>Cyber Security Tips</h1>
-    <br>
-    <div class="card">
-         <p>{{ advice.text }}</p>
-    </div>
-    <br>
-{% endfor %}
+<div class="container my-5 text-center">
+    {% if givebestadvice_list %}
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="mb-4">Cyber Security Insights</h1>
+                {% for tip in givebestadvice_list %}
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <p class="card-text">{{ tip.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     {% else %}
-    <h1>There is still no advices.</h1>
-    <p>Write the first one.</p>
-    <a href="{% url 'write-advice' %}">Write your best advice.</a>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1>No Insights Yet</h1>
+                <p class="lead">Be the first to share your wisdom.</p>
+                <a href="{% url 'write-advice' %}" class="btn btn-warning btn-lg">Share Your Advice</a>
+            </div>
+        </div>
     {% endif %}
+</div>
 {% endblock content %}

@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-<div>
-    <h3>Scan a Link for viruses</h3>
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Scan</button>
-    </form>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Guard Your Link Against Viruses</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-danger btn-block mt-4" type="submit">Initiate Scan</button>
+            </form>
+        </div>
     </div>
+</div>
 {% endblock content %}

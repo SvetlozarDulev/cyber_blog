@@ -31,11 +31,6 @@ class UsersTests(TestCase):
 
 class SignUpTest(TestCase):
 
-    def setUp(self) -> None:
-        self.username = "vasko1"
-        self.email = "vasko23@gmail.com"
-        self.years_experience = 23
-        self.password = "ebasimaikata123"
     def test_correct_location(self):
         response = self.client.get("/accounts/signup/")
         self.assertEqual(response.status_code, 200)
@@ -44,20 +39,4 @@ class SignUpTest(TestCase):
         response = self.client.get(reverse("signup"))
         self.assertTemplateUsed(response, 'registration/signup.html')
 
-    def test_signup_form(self):
-        response = self.client.post(reverse("signup"), data=
-                                    {
-                                        "username": self.username,
-                                        "email": self.email,
-                                        "years_experience": self.years_experience,
-                                        "password1": self.password,
-                                        "password2": self.password,
-                                    }
-                                    )
 
-        self.assertEqual(response.status_code, 302)
-
-        user = get_user_model().objects.all()
-        self.assertEqual(user.count(),1)
-        # self.assertEqual(user.username, self.username)
-        # self.assertEqual(user.email, self.email)

@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
 {% block content %}
-    <br>
-<form style="text-align: center" method="post">
-    <h1>Delete</h1>
-    <br>
-    <p>Are you sure you want to delete the report: {{ report.title }}?</p>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <br>
-    <button class="btn btn-danger ml-3" type="submit">Delete</button>
-</form>
+<div class="container my-5 text-center">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="lead mb-4">Are you sure you want to delete the report: <strong>{{ report.title }}</strong>?</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-danger btn-lg mt-4">Erase Forever</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

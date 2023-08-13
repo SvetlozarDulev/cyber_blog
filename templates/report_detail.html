@@ -2,98 +2,55 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <!-- Add your CSS link here if you have a separate CSS file -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
+    <div class="container-fluid my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <header class="text-center">
+                    <h1 class="display-4">{{ report.title }}</h1>
+                </header>
 
-    header {
-      background-color: #3498db;
-      padding: 20px;
-      color: #fff;
-      text-align: center;
-    }
+                <div class="article-container mt-4">
+                    <div class="article-content">
+                        <p class="lead">
+                            {{ report.body }}
+                        </p>
 
-    h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
+                        <p>
+                            Additional materials: <a href="{{ report.additional_materials }}" class="text-warning">{{ report.additional_materials }}</a>
+                        </p>
+                    </div>
 
-    .article-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+                    <div class="article-buttons text-center mt-4">
+                        {% if user == report.author %}
+                            <a href="{% url 'report_edit' report.pk %}" class="btn btn-outline-warning mx-2">Edit</a>
+                            <a href="{% url 'report_delete' report.pk %}" class="btn btn-outline-danger mx-2">Delete</a>
+                        {% endif %}
+                        <a href="{% url 'report_list' %}" class="btn btn-outline-info mx-2">Back to Reports</a>
+                    </div>
 
-    .article-content {
-      text-align: justify;
-      line-height: 1.8;
-    }
+                    <div class="mt-4">
+                        {% for group in user.groups.all %}
+                            {% if group.name == "guest" %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <button type="submit" class="btn btn-warning">Post</button>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
 
-    .article-buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .article-button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      background-color: #3498db;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-
-<body>
-  <header>
-    <h1>{{ report.title }}</h1>
-  </header>
-
-  <div class="article-container">
-    <div class="article-content">
-      <p>
-          {{ report.body }}
-      </p>
-
-        <p>
-            Additional materials: <a href="{{ report.additional_materials }}">{{ report.additional_materials }}</a>
-        </p>
-    <div class="article-buttons">
-        {% if user == report.author %}
-      <a href="{% url 'report_edit' report.pk %}" class="article-button">Edit</a>
-      <a href="{% url 'report_delete' report.pk %}" class="article-button">Delete</a>
-        {% endif %}
-      <a href="{% url 'report_list' %}" class="article-button">Back to Reports</a>
-    </div>
-  </div>
-  <br>
-  <div>
-    {% for group in user.groups.all %}
-      {% if group.name == "guest" %}
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit">Post</button>
-        </form>
-      {% endif %}
-    {% endfor %}
-    </div>
-  <h4 style="text-align: center">Comments</h4>
-      {% for comment in report.comment_set.all %}
-          <br>
-        <div style="display: grid" class="card">
-            <h6 style="font-size: 20px;font-style: italic;">Author: {{ comment.author  }}</h6>
-            <p>{{ comment }}</p>
-            <p>{{ comment.post_date }}</p>
+                    <h4 class="text-center mt-4">Comments</h4>
+                    {% for comment in report.comment_set.all %}
+                        <div class="comment-card border p-3 mt-3">
+                            <h6 class="comment-author text-warning">Author: {{ comment.author }}</h6>
+                            <p class="mb-0">{{ comment }}</p>
+                            <p class="text-muted">{{ comment.post_date }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-      {% endfor %}
     </div>
-
-</body>
 {% endblock content %}
+
