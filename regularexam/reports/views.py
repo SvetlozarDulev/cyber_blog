@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -11,7 +12,14 @@ from django.views import View
 # Create your views here.
 class ReportListView(ListView):
     template_name = 'report_list.html'
+    context_object_name = 'reports'
     model = Report
+    queryset = Report.objects.all()
+    paginate_by = 3
+
+
+
+
 
 
 class ReportEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
