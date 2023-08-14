@@ -1,4 +1,3 @@
-
 import vt
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -10,7 +9,7 @@ def scan_url(request):
         form = ScanningLinkForm(request.POST)
         if form.is_valid():
             url = form.cleaned_data['url']
-            api_key = 'YOUR_VIRUSTOTAL_API_KEY'  # Replace with your actual API key
+            api_key = '3ffdbe0d8589c1698265ea81c3cfb1693b8d064338aa42d04aa05ca0affdce98'
             client = vt.Client(api_key)
 
             try:
@@ -30,4 +29,4 @@ def scan_url(request):
             return render(request,'virus_result.html', scan_result)
     else:
         form = ScanningLinkForm()
-    return render(request, 'scan_link.html', {'form':form})
+    return render(request, 'scan_link.html', {'form': form})

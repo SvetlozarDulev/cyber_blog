@@ -1,13 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.core.paginator import Paginator
-from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 from .models import Report
 from .forms import CommentForm
-from .tasks import fetch_cybersecurity_news
-from django.views import View
+
 
 # Create your views here.
 class ReportListView(ListView):
@@ -16,10 +13,6 @@ class ReportListView(ListView):
     model = Report
     queryset = Report.objects.all()
     paginate_by = 3
-
-
-
-
 
 
 class ReportEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -83,8 +76,3 @@ class ReportCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class CybersecurityNewsView(View):
-
-    async def get(self, request):
-        articles = await fetch_cybersecurity_news.delay()
-        return JsonResponse(articles,safe=False)

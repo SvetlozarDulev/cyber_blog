@@ -24,5 +24,6 @@ urlpatterns = [
     path('reports/',include("regularexam.reports.urls")),
     path('', include("regularexam.pages.urls")),
     path('virus/',include('regularexam.virus_api.url')),
+    path('encrypt/',include('regularexam.encrypt_app.urls')),
 
 ]

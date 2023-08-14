@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-center">Text Encryption</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary btn-block mt-3">Encrypt</button>
+                        </form>
+                        <div class="mt-4">
+                            <p class="text-center">Encryption Key: {{ key }}</p>
+                            <h2 class="text-center mt-4">Encrypted Text: {{ encrypted_text }}</h2>
+                            <h2 class="text-center mt-4">Original Text: {{ decrypted_text }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

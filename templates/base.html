@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,10 +33,12 @@
           {{ user.username }}
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="{% url 'report_list' %}">Reports</a></li>
             <li><a class="dropdown-item" href="{% url 'education' %}">Add Education material</a></li>
             <li><a class="dropdown-item" href="{% url 'education-list' %}">Cyber Education</a></li>
             <li><a class="dropdown-item" href="{% url 'write-advice' %}">Write an Advice</a></li>
             <li><a class="dropdown-item" href="{% url 'scan_link' %}">Scan a Link</a></li>
+            <li><a class="dropdown-item" href="{% url 'encrypt_text' %}">Encrypt Text</a></li>
 
             <li><a class="dropdown-item" href="{% url 'best-advice' %}">Best Advices</a></li>
 
